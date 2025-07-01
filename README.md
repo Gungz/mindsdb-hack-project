@@ -119,7 +119,6 @@ VITE_MINDSDB_DATABASE=mindsdb
 docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=hackathon -p 3306:3306 mysql:latest
 ```
 
-
 #### MindsDB Setup
 
 1. Start MindsDB server in docker:
@@ -143,11 +142,24 @@ If you run `mysql` and `mindsdb` in different setting, kindly change `src/config
 ```bash
 npm run dev
 ```
-
 This will start both the frontend (Vite) and backend (Express) servers concurrently.
 
 - **Frontend**: http://localhost:5173
 - **Backend API**: http://localhost:3001
+
+### 6. KB Evaluation
+Watch Youtube demo video to understand how to fetch hackathon from various sources.  
+Run the fetch using button on the `admin` page for each hackathon source.
+Then replace <openai_api_key> in `src/database/eval_kb_setup.sql` and `src/database/eval_kb_run.sql` with your API key. 
+Finally, using command line run the following:
+```bash
+npm run kb:eval_setup
+npm run kb:eval_run
+```
+**P.S.:** If you need to redo the evaluation, kindly run this SQL in the mindsdb console `DROP table mysql_datasource.hackathon.eval_hackathons;`, then rerun the commands above.  
+Also, if you get error related to SSL routines, when running `npm run kb:eval_setup` but you get message **KB evaluation setup done successfully**, ignore the error.  
+The test data is still successfully generated if success message appears.
+
 
 ## 📁 Project Structure
 
@@ -300,7 +312,6 @@ npm run db:setup
 ```
 
 ## 🤝 Contributing
-
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit your changes (`git commit -m 'Add amazing feature'`)

@@ -9,6 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "db:setup": "node src/database/setup.js",
+    "kb:eval_setup": "node src/database/eval_kb_setup.js",
+    "kb:eval_run": "node src/database/eval_kb_run.js",
     "server": "tsx src/server/index.ts"
   },
   "dependencies": {
